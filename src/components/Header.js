@@ -3,17 +3,13 @@ import "../asset/header.css";
 import styled from 'styled-components'
 import { CSSTransition } from "react-transition-group";
 class Header extends Component {
-  state={
-    show:true
-  }
-handleClick=() => {
-  const {show}=this.state
-   this.setState({
-     show:!show
-   })
+ 
+handleClick=(show) => {
+  const {handleShow}=this.props
+   handleShow(show)
 }
   render() {
-    const {show}=this.state
+    const {show}=this.props
     return (
       <div style={{padding:"20px 0"
       }}>
@@ -25,7 +21,7 @@ handleClick=() => {
         >
         {state=>(<h1>React shopping-cart</h1>)}
         </CSSTransition>
-        <Button onClick={this.handleClick}>{show?'隐藏':'显示'}</Button>
+        <Button onClick={()=>{this.handleClick(show)}}>{show?'隐藏':'显示'}</Button>
       </div>
     );
   }

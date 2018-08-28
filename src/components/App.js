@@ -5,11 +5,20 @@ import ShoppingCartComtaiiner from "../containers/ShoppingCartComtaiiner";
 import styled from "styled-components";
 
 class App extends Component {
+  state={
+    show:true
+  }
+  handleShow=(show) => {
+    this.setState({
+      show:!show
+    })
+  }
   render() {
+    const {show}=this.state
     return (
       <Wrap>
-        <Header />
-        <hr style={{height:"2px",border:"none",borderTop:"2px groove skyblue"}}/>
+        <Header show={show} handleShow={this.handleShow}/>
+        <hr style={{height:"2px",border:"none",borderTop:"2px groove skyblue",marginLeft:show?0:'30px'}}/>
         <ProductsContainer />
         <hr style={{height:"2px",border:"none",borderTop:"2px groove skyblue"}}/>
         <ShoppingCartComtaiiner />
